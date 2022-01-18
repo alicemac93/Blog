@@ -29,7 +29,7 @@ const Nav = () => {
                 <Link to="/"><img alt="logo" src={logo} /></Link>
             </ListItem>
             <ListItem>
-                <Link to="/about">About</Link>
+                <Link to="/inspiration">Inspiration for today</Link>
             </ListItem>
             <ListItem>
                 <Link to="/my-articles">My Articles</Link>
