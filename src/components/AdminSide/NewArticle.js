@@ -11,8 +11,6 @@ function NewArticle() {
     const [title, setTitle] = useState('')
     const [image, setImage] = useState('')
     const [content, setContent] = useState('')
-
-    console.log(store.getState())
     const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
@@ -23,10 +21,10 @@ function NewArticle() {
             return;
         }
 
-        if (content.length < 100) {
-            alert("The lenght of the content must be larger than 100")
-            return;
-        }
+        /*         if (content.length < 100) {
+                    alert("The lenght of the content must be larger than 100")
+                    return;
+                } */
 
         if (title.length < 2) {
             alert("The lenght of the title must be larger than 2")
@@ -37,6 +35,7 @@ function NewArticle() {
             articleId: uuidv4(),
             title,
             content,
+            image,
             imageId: uuidv4(),
             createdAt: Date.now(),
         }
@@ -50,14 +49,14 @@ function NewArticle() {
     return (
         <>
             <Form onSubmit={handleSubmit} >
-                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                     <h2>Create new article</h2>
-                    <Form.Group controlId="btn">
-                        <Button type="submit">Publish Article</Button>
+                    <Form.Group className="form-group"  controlId="btn">
+                        <Button type="submit" variant="primary">Publish Article</Button>
                     </Form.Group>
                 </div>
                 <div>
-                    <Form.Group controlId="title">
+                    <Form.Group className="form-group" controlId="title">
                         <Form.Label>Article Title</Form.Label>
                         <Form.Control
                             name="title"
@@ -67,7 +66,7 @@ function NewArticle() {
                         />
                     </Form.Group>
 
-                    <Form.Group controlId="image">
+                    <Form.Group className="form-group" controlId="image">
                         <Form.Label>Featured image</Form.Label>
                         <Form.Control
                             name="image"
@@ -79,7 +78,7 @@ function NewArticle() {
                         </Form.Control>
                     </Form.Group>
 
-                    <Form.Group controlId="content">
+                    <Form.Group className="form-group" controlId="content">
                         <Form.Label>Content</Form.Label>
                         <textarea
                             name="content"

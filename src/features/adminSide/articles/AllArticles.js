@@ -1,11 +1,13 @@
 import { Button, Table } from 'react-bootstrap';
-import ArticleListItem from '../../../components/ArticleListItem';
+import ArticleListItem from '../../../components/AdminSide/ArticleListItem';
 import { Link } from "react-router-dom";
 
-function AllArticles() {
+
+function AllArticles({articles}) {
+
     return (
         <div>
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", marginBottom: "30px" }}>
                 <h2>My Articles</h2>
                 <Button variant="primary">
                     <Link to="/createarticle" style={{ color: "#fff", textDecoration: "none" }}>
@@ -17,7 +19,7 @@ function AllArticles() {
             <Table responsive>
                 <thead>
                     <tr>
-                        <th>checkbox</th>
+                        <th></th>
                         <th>Article title</th>
                         <th>Perex</th>
                         <th>Author</th>
@@ -26,7 +28,11 @@ function AllArticles() {
                     </tr>
                 </thead>
                 <tbody>
-                    <ArticleListItem />
+                    {articles.map(article =>
+                        <ArticleListItem
+                            key={article.articleId}
+                            article={article} />
+                    )}
                 </tbody>
             </Table>
         </div>
