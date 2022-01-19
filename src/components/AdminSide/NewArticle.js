@@ -4,7 +4,8 @@ import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addArticle } from '../../features/adminSide/articles/ArticlesSlice';
 import { v4 as uuidv4 } from 'uuid';
-import { store } from '../../app/store';
+import { useNavigate } from "react-router-dom";
+
 // take out the styling of this page and make it as a component or smt like that in styled components;
 
 function NewArticle() {
@@ -12,6 +13,7 @@ function NewArticle() {
     const [image, setImage] = useState('')
     const [content, setContent] = useState('')
     const dispatch = useDispatch()
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,18 +43,19 @@ function NewArticle() {
         }
 
         dispatch(addArticle(data))
-
-        // Make it go to the My Articles page after this is filled in.
+        navigate('/my-articles')
     }
 
 
     return (
         <>
             <Form onSubmit={handleSubmit} >
-                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                     <h2>Create new article</h2>
-                    <Form.Group className="form-group"  controlId="btn">
-                        <Button type="submit" variant="primary">Publish Article</Button>
+                    <Form.Group className="form-group" controlId="btn">
+                        <Button type="submit" variant="primary">
+                            Publish Article
+                        </Button>
                     </Form.Group>
                 </div>
                 <div>

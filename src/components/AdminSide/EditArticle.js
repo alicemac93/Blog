@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { editArticle } from '../../features/adminSide/articles/ArticlesSlice'
-
+import { useNavigate } from "react-router-dom";
 
 function EditArticle({ articles, activeId }) {
 
@@ -12,10 +12,11 @@ function EditArticle({ articles, activeId }) {
     // const [image, setUpdatedImage] = useState(activeArticle.imageId)
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
+        alert('Are you sure you want to update this article?')
         const updatedPost = {
             title,
             content,
@@ -23,6 +24,8 @@ function EditArticle({ articles, activeId }) {
         }
 
         dispatch(editArticle(updatedPost))
+
+        navigate('/my-articles')
     }
 
     return (
@@ -44,7 +47,7 @@ function EditArticle({ articles, activeId }) {
                     />
                 </Form.Group>
 
-{/*                 <Form.Group controlId="image">
+                {/*                 <Form.Group controlId="image">
                     <Form.Label>Featured image</Form.Label>
                     <Form.Control
                         name="image"
