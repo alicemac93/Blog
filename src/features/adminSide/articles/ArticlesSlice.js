@@ -7,16 +7,20 @@ export const AllArticlesSlice = createSlice({
         activePostId: ''
     },
     reducers: {
+        loadArticles: (state, action) => {
+            // axios.get
+        },
         addArticle: (state, action) => {
-            state.posts.push(action.payload)
+            state.posts.push(action.payload) //axios.post
+            console.log("add", state)
         },
         removeArticle: (state, action) => {
-            const id = action.payload;
-            state = state.posts.filter(article => article.articleId !== id)
+            const id = action.payload; // axios.delete
+            state.posts.filter(article => article.articleId !== id)
 
             return state;
         },
-        editArticle: (state, action) => {
+        editArticle: (state, action) => { // axios.put
             const { title, content, activeId } = action.payload;
             const indexToBeUpdated = state.posts.findIndex(post => post.articleId === activeId)
             const postToBeUpdated = state.posts.find(article => article.articleId === activeId)

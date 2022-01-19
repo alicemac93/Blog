@@ -20,7 +20,7 @@ function Home() {
         return message;
     }
     return (
-        <div style={{textAlign:}}>
+        <div style={{ textAlign: "center" }}>
             <h2>{getGreeting()}</h2>  {/* Add name of the user */}
             <p>This is your space to create your own blog posts! Please see the navigation to see your posts, create new and edit the existing ones!</p>
         </div>
