@@ -19,7 +19,7 @@ function ArticleListItem({ article }) {
         <tr key={articleId}>
             <td><input type="checkbox" /></td>
             <td>{title}</td>
-            <td style={{ maxWidth: "300px", height: "20px", "overflowX": "hidden" }}>{content}</td>
+            <td style={{ maxWidth: "500px", height: "20px", "overflow": "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", }}>{content}</td>
             <td>Author</td>
             <td>comments</td>
             <td>
