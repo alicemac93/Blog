@@ -26,7 +26,7 @@ const Nav = () => {
     return (
         <Navbar>
             <ListItem>
-                <Link to="/"><img alt="logo" src={logo} /></Link>
+                <Link to="/home"><img alt="logo" src={logo} /></Link>
             </ListItem>
             <ListItem>
                 <Link to="/inspiration">Inspiration for today</Link>
