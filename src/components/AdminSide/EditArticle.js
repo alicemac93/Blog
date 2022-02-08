@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { PublishButton } from '../../styled-componets';
 import { useDispatch } from 'react-redux';
 import { editArticle } from '../../features/adminSide/articles/ArticlesSlice'
 import { useNavigate } from "react-router-dom";
@@ -9,8 +10,11 @@ function EditArticle({ articles, activeId }) {
     const activeArticle = articles.find(article => article.articleId === activeId);
     const [title, setUpdatedTitle] = useState(activeArticle.title)
     const [content, setUpdatedContent] = useState(activeArticle.content)
-    // const [image, setUpdatedImage] = useState(activeArticle.imageId)
+    const [image, setUpdatedImage] = useState(activeArticle.imageId)
 
+    const handleImage = (event) => {
+        setUpdatedImage(URL.createObjectURL(event.target.files[0]))
+    }
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -20,7 +24,8 @@ function EditArticle({ articles, activeId }) {
         const updatedPost = {
             title,
             content,
-            activeId
+            activeId,
+            image
         }
 
         dispatch(editArticle(updatedPost))
@@ -30,10 +35,10 @@ function EditArticle({ articles, activeId }) {
 
     return (
         <Form onSubmit={handleSubmit} >
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+            <div className="article--heading">
                 <h2>Edit article</h2>
                 <Form.Group className="form-group" controlId="btn">
-                    <Button type="submit">Publish Article</Button>
+                    <PublishButton type="submit">Publish Article</PublishButton>
                 </Form.Group>
             </div>
             <div>
@@ -47,17 +52,16 @@ function EditArticle({ articles, activeId }) {
                     />
                 </Form.Group>
 
-                {/*                 <Form.Group controlId="image">
+                <Form.Group controlId="image">
                     <Form.Label>Featured image</Form.Label>
                     <Form.Control
                         name="image"
                         type="file"
-                        value={image}
-                        onChange={(e) => setUpdatedImage(e.target.value)}
+                        onChange={handleImage}
                         style={{ width: "500px" }}
                         accept="image/png, image/jpeg">
                     </Form.Control>
-                </Form.Group> */}
+                </Form.Group>
 
                 <Form.Group className="form-group" controlId="content">
                     <Form.Label>Content</Form.Label>
