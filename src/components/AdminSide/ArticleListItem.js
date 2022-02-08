@@ -12,7 +12,7 @@ const Icon = styled.img`
 
 function ArticleListItem({ article }) {
 
-    const { title, articleId, content } = article;
+    const { title, articleId, content, user } = article;
     const dispatch = useDispatch();
 
     return (
@@ -20,7 +20,7 @@ function ArticleListItem({ article }) {
             <td><input type="checkbox" /></td>
             <td>{title}</td>
             <td style={{ maxWidth: "500px", height: "20px", "overflow": "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", }}>{content}</td>
-            <td>Author</td>
+            <td>{user}</td>
             <td>comments</td>
             <td>
                 <Link

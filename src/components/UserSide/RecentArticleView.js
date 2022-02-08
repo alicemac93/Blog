@@ -4,9 +4,10 @@ import { useDispatch } from "react-redux";
 import { getActiveArticleId } from '../../features/adminSide/articles/ArticlesSlice';
 import { useEffect, useState } from 'react';
 
-function RecentArticleView({ title, id, image, content }) {
+function RecentArticleView({article}) {
     const [readingTime, setReadingTime] = useState()
     const dispatch = useDispatch()
+    const { title, articleId, image, content, user } = article;
 
     useEffect(() => {
         const calculateReadingTime = () => {
@@ -18,9 +19,9 @@ function RecentArticleView({ title, id, image, content }) {
 
     return (
         <Article>
-            <Link to={`/article-detail/${id}`}
+            <Link to={`/article-detail/${articleId}`}
                 className="flip-card"
-                onClick={() => dispatch(getActiveArticleId(id))}
+                onClick={() => dispatch(getActiveArticleId(articleId))}
                 style={{ color: "#fff", textDecoration: "none" }}>
                 <div className="flip-card-inner">
                     <div className="flip-card-front">
@@ -29,6 +30,7 @@ function RecentArticleView({ title, id, image, content }) {
                             maxHeight: "100%"
                         }} src={image} alt="illustrative" />
                         <h3>{title}</h3>
+                        <p>Author: {user}</p>
                         <p>{(readingTime) ? `Reading time ${readingTime}` : undefined}</p>
                     </div>
                     <div style={{ maxWidth: "500px", height: "500px" }} className="flip-card-back">

@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { Form } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addArticle } from '../../features/adminSide/articles/ArticlesSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from "react-router-dom";
 import { PublishButton  } from '../../styled-componets';
+import { selectActiveUser } from '../../features/adminSide/users/UsersSlice';
 
 // take out the styling of this page and make it as a component or smt like that in styled components;
 // https://codepen.io/nikolett_codes/pen/daWxea to add hashtags to the articles
@@ -17,7 +18,7 @@ function NewArticle() {
     const [content, setContent] = useState('')
     const dispatch = useDispatch()
     const navigate = useNavigate();
-
+    const user = useSelector(selectActiveUser)
 
     const handleImage = (event) => {
         setImage(URL.createObjectURL(event.target.files[0]))
@@ -48,6 +49,7 @@ function NewArticle() {
             image,
             imageId: uuidv4(),
             createdAt: Date.now(),
+            user,
         }
 
         dispatch(addArticle(data))

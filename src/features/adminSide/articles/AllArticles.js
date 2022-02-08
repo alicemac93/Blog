@@ -2,8 +2,12 @@ import { Table } from 'react-bootstrap';
 import ArticleListItem from '../../../components/AdminSide/ArticleListItem';
 import { Link } from "react-router-dom";
 import { PublishButton } from '../../../styled-componets';
+import { useSelector } from 'react-redux';
+import { selectActiveUser } from '../users/UsersSlice';
 
 function AllArticles({ articles }) {
+    const activeUser = useSelector(selectActiveUser)
+    const userArticles = articles.filter(article => article.user === activeUser)
 
     return (
         <>
@@ -28,7 +32,7 @@ function AllArticles({ articles }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {articles.map(article =>
+                    {userArticles.map(article =>
                         <ArticleListItem
                             key={article.articleId}
                             article={article} />
