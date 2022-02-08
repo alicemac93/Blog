@@ -1,19 +1,19 @@
-import { Button, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import ArticleListItem from '../../../components/AdminSide/ArticleListItem';
 import { Link } from "react-router-dom";
+import { PublishButton } from '../../../styled-componets';
 
-
-function AllArticles({articles}) {
+function AllArticles({ articles }) {
 
     return (
-        <div>
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", marginBottom: "30px" }}>
+        <>
+            <div className="article--heading">
                 <h2>My Articles</h2>
-                <Button variant="primary">
+                <PublishButton variant="primary">
                     <Link to="/createarticle" style={{ color: "#fff", textDecoration: "none" }}>
                         Create new article
                     </Link>
-                </Button>
+                </PublishButton>
             </div>
 
             <Table responsive>
@@ -35,7 +35,7 @@ function AllArticles({articles}) {
                     )}
                 </tbody>
             </Table>
-        </div>
+        </>
     )
 }
 

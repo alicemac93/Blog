@@ -1,12 +1,15 @@
 import { useState } from 'react'
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addArticle } from '../../features/adminSide/articles/ArticlesSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from "react-router-dom";
+import { PublishButton  } from '../../styled-componets';
 
 // take out the styling of this page and make it as a component or smt like that in styled components;
+// https://codepen.io/nikolett_codes/pen/daWxea to add hashtags to the articles
+
 
 function NewArticle() {
     const [title, setTitle] = useState('')
@@ -14,6 +17,11 @@ function NewArticle() {
     const [content, setContent] = useState('')
     const dispatch = useDispatch()
     const navigate = useNavigate();
+
+
+    const handleImage = (event) => {
+        setImage(URL.createObjectURL(event.target.files[0]))
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -50,12 +58,12 @@ function NewArticle() {
     return (
         <>
             <Form onSubmit={handleSubmit} >
-                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+                <div className="article--heading">
                     <h2>Create new article</h2>
                     <Form.Group className="form-group" controlId="btn">
-                        <Button type="submit" variant="primary">
+                        <PublishButton type="submit" variant="primary">
                             Publish Article
-                        </Button>
+                        </PublishButton>
                     </Form.Group>
                 </div>
                 <div>
@@ -74,8 +82,7 @@ function NewArticle() {
                         <Form.Control
                             name="image"
                             type="file"
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
+                            onChange={handleImage}
                             style={{ width: "500px" }}
                             accept="image/png, image/jpeg">
                         </Form.Control>
