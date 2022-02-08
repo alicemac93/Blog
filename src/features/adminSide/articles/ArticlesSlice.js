@@ -4,7 +4,8 @@ export const AllArticlesSlice = createSlice({
     name: "articles",
     initialState: {
         posts: [],
-        activePostId: ''
+        activePostId: '',
+        activeArticleId: ''
     },
     reducers: {
         loadArticles: (state, action) => {
@@ -12,7 +13,6 @@ export const AllArticlesSlice = createSlice({
         },
         addArticle: (state, action) => {
             state.posts.push(action.payload) //axios.post
-            console.log("add", state)
         },
         removeArticle: (state, action) => {
             const id = action.payload; // axios.delete
@@ -21,13 +21,14 @@ export const AllArticlesSlice = createSlice({
             return state;
         },
         editArticle: (state, action) => { // axios.put
-            const { title, content, activeId } = action.payload;
+            const { title, content, activeId, image } = action.payload;
             const indexToBeUpdated = state.posts.findIndex(post => post.articleId === activeId)
             const postToBeUpdated = state.posts.find(article => article.articleId === activeId)
             const postUpdated = {
                 ...postToBeUpdated,
                 title: title,
-                content: content
+                content: content,
+                image: image
             }
             state.posts[indexToBeUpdated] = postUpdated;
 
@@ -35,14 +36,18 @@ export const AllArticlesSlice = createSlice({
         },
         getActivePostId: (state, action) => {
             state.activePostId = action.payload;
+        },
+        getActiveArticleId: (state, action) => {
+            state.activeArticleId = action.payload
         }
     }
 })
 
 
-export const { addArticle, removeArticle, editArticle, getActivePostId } = AllArticlesSlice.actions;
+export const { addArticle, removeArticle, editArticle, getActivePostId, getActiveArticleId } = AllArticlesSlice.actions;
 
 export const selectArticles = (state) => state.articles.posts;
 export const selectActiveId = (state) => state.articles.activePostId;
+export const selectActiveArticleId = (state) => state.articles.activeArticleId;
 
 export default AllArticlesSlice.reducer;
