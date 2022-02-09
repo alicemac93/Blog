@@ -1,17 +1,201 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;700&family=Space+Mono:ital@0;1&display=swap');
 
+html {
+  background-color: #fcba8e;
+  margin: 0
+}
+
+p {
+  margin-bottom: 0;
+}
+
+/* general classes */
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.small-text {
+  font-size: 10px;
+}
+
 .App {
   font-family: 'Space Mono', monospace;
+  color: black;
+  background-color: #fcba8e;
+}
+
+.logo {
+  max-height: 50px ;
 }
 
 .main-wrapper {
-  margin-top: 100px
+  margin-top: 200px;
+  background-color: white;
+  height: 75vh;
+  max-width: 1100px;
+  margin: 100px auto;
+  border-radius: 12px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  padding: 30px;
 }
 
 .form-group {
   margin: 30px 0;
 }
 
+.greeting-container {
+  padding: 100px;
+  text-align: center
+}
+
+.login-wrapper {
+  max-width: 400px;
+  margin: 100px auto;
+
+}
+
+a:hover {
+  color: #ff812d;
+}
+
+.quote-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 85px;
+}
 .quote-container {
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  background-color: #8cc7da;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  padding: 20px;
+  border-radius: 70%;
+  height: 500px;
+  width: 500px;
+}
+
+.article-text-area {
+  height: 30vh;
+  width: 100%
+}
+.article-detail--container {
+  height: 100%;
+  align-items: flex-start;
+  justify-content: space-around;
+  overflow: scroll;
+}
+
+.article-detail--heading {
+
+}
+
+.flip-card-image-container {
+  height: 200px;
+  width: auto;
+}
+
+.flip-card-font--image {
+  max-height:100%;
+  max-width:100%
+}
+.recent-articles--wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.article--heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.btn-back {
+  border: none;
+  background-color: none;
+}
+.flip-card {
+  background-color: transparent;
+  /*   width: 300px;
+  height: 200px; */
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  color: black;
+  transform: rotateY(180deg);
+}
+
+.circle1,
+.circle2,
+.circle3,
+.circle4 {
+  background: white;
+  background: linear-gradient(
+    to left bottom,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.3));
+  height: 180px;
+  width: 180px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle1 {
+  top: 7%;
+  right: 16%;
+}
+.circle2 {
+  bottom: -3%;
+  left: 16%;
+}
+.circle3,
+.circle4 {
+  width: 100px;
+  height: 100px;
+}
+.circle3 {
+  bottom: -5%;
+  left: 15%;
+}
+.circle4 {
+  top: 6%;
+  right: 14%;
 }
