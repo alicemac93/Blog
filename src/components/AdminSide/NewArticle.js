@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addArticle } from '../../features/adminSide/articles/ArticlesSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from "react-router-dom";
-import { PublishButton  } from '../../styled-componets';
+import { PublishButton } from '../../styled-componets';
 import { selectActiveUser } from '../../features/adminSide/users/UsersSlice';
 
 // take out the styling of this page and make it as a component or smt like that in styled components;
@@ -32,10 +32,10 @@ function NewArticle() {
             return;
         }
 
-        /*         if (content.length < 100) {
-                    alert("The lenght of the content must be larger than 100")
-                    return;
-                } */
+        if (content.length < 100) {
+            alert("The lenght of the content must be larger than 100")
+            return;
+        }
 
         if (title.length < 2) {
             alert("The lenght of the title must be larger than 2")
