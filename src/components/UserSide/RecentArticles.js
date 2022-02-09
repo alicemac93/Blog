@@ -11,11 +11,9 @@ function RecentArticles({ articles }) {
             <div className="recent-articles--wrapper">
                 {sortedArticles.map(article =>
                     <RecentArticleView
-                        title={article.title}
+                        article={article}
                         key={article.articleId}
                         id={article.articleId}
-                        image={article.image}
-                        content={article.content}
                     />
                 )}
             </div>

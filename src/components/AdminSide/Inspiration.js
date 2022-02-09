@@ -33,11 +33,12 @@ function RandomQuote() {
     }, [])
 
     return (
-
-        <div className="quote-container" onClick={createQuote}>
-            <q>{quote.text}</q>
-            <p>{quote.author}</p>
-            <p className="description">* Click me to show next quote</p>
+        <div className="quote-wrapper">
+            <div className="quote-container column" onClick={createQuote}>
+                <q>{quote.text}</q>
+                <p>{quote.author}</p>
+                <p className="small-text">* Click me to show next quote</p>
+            </div>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { getActiveArticleId } from '../../features/adminSide/articles/ArticlesSlice';
 import { useEffect, useState } from 'react';
 
-function RecentArticleView({article}) {
+function RecentArticleView({ article }) {
     const [readingTime, setReadingTime] = useState()
     const dispatch = useDispatch()
     const { title, articleId, image, content, user } = article;
@@ -23,22 +23,24 @@ function RecentArticleView({article}) {
                 className="flip-card"
                 onClick={() => dispatch(getActiveArticleId(articleId))}
                 style={{ color: "#fff", textDecoration: "none" }}>
+
                 <div className="flip-card-inner">
                     <div className="flip-card-front">
-                        <img style={{
-                            maxWidth: "100%",
-                            maxHeight: "100%"
-                        }} src={image} alt="illustrative" />
+                        <div className="flip-card-image-container">
+                        <img className="flip-card-font--image" src={image} alt={title} />
+                        </div>
                         <h3>{title}</h3>
                         <p>Author: {user}</p>
                         <p>{(readingTime) ? `Reading time ${readingTime}` : undefined}</p>
                     </div>
-                    <div style={{ maxWidth: "500px", height: "500px" }} className="flip-card-back">
+
+                    <div className="flip-card-back">
                         <p style={{ "overflow": "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", }}>
                             {content}
                         </p>
                     </div>
                 </div>
+
             </Link>
         </Article >
     )

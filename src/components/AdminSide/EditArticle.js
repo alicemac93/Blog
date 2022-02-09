@@ -6,7 +6,8 @@ import { editArticle } from '../../features/adminSide/articles/ArticlesSlice'
 import { useNavigate } from "react-router-dom";
 
 function EditArticle({ articles, activeId }) {
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const activeArticle = articles.find(article => article.articleId === activeId);
     const [title, setUpdatedTitle] = useState(activeArticle.title)
     const [content, setUpdatedContent] = useState(activeArticle.content)
@@ -15,8 +16,6 @@ function EditArticle({ articles, activeId }) {
     const handleImage = (event) => {
         setUpdatedImage(URL.createObjectURL(event.target.files[0]))
     }
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -29,7 +28,6 @@ function EditArticle({ articles, activeId }) {
         }
 
         dispatch(editArticle(updatedPost))
-
         navigate('/my-articles')
     }
 
@@ -70,7 +68,7 @@ function EditArticle({ articles, activeId }) {
                         type="text"
                         value={content}
                         onChange={(e) => setUpdatedContent(e.target.value)}
-                        style={{ height: "50vh", width: "100%" }}
+                        className="article-text-area"
                     >
                     </textarea>
                 </Form.Group>

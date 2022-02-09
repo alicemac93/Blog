@@ -97,7 +97,7 @@ function NewArticle() {
                             type="text"
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
-                            style={{ height: "50vh", width: "100%" }}
+                            className="article-text-area"
                         >
                         </textarea>
                     </Form.Group>
