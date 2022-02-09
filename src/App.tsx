@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
-import './App.css';
+import './app.css';
 import AllArticles from './features/adminSide/articles/AllArticles';
 import Nav from './containers/Layout';
 import NewArticle from './components/AdminSide/NewArticle';
