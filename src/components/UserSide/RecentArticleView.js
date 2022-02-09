@@ -14,7 +14,7 @@ function RecentArticleView({ article }) {
         const calculateReadingTime = () => {
             const words = content.match(/(\w+)/g).length;
             const readingTimeCalc = Math.floor(words / 238)
-            setReadingTime(readingTimeCalc < 1 ? "< 1 min" : readingTimeCalc)
+            setReadingTime(readingTimeCalc < 1 ? "< 1" : readingTimeCalc)
         }
         calculateReadingTime()
     }, [])
