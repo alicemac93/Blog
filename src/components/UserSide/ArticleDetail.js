@@ -12,9 +12,9 @@ function ArticleDetail({ articles, activeArticleId }) {
     return (
         <div className="column article-detail--container">
             <button className="icon--back btn-back" onClick={goBack}>Go back</button>
-            <img alt="post" src={image} style={{
-                maxHeight: "500px"
-            }} />
+            <div className="article-detail--image-container">
+                <img alt="post" src={image} />
+            </div>
             <div className="aricle-detail--heading">
                 <h1>{title}</h1>
                 <p>{`date published: ${datePublished.getDate()}/${datePublished.getMonth()}/${datePublished.getFullYear()}`}</p>
