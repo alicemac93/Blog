@@ -1,4 +1,8 @@
+import { useSelector } from "react-redux";
+import { selectActiveUser } from "../../features/adminSide/users/UsersSlice";
+
 function Home() {
+    const user = useSelector(selectActiveUser);
 
     const getGreeting = () => {
         let today = new Date();
@@ -22,7 +26,7 @@ function Home() {
     return (
         <div className="greeting-container">
             <h2>{getGreeting()}</h2>  {/* Add name of the user */}
-            <p>This is your space to create your own blog posts! Please log in to see your posts, create new and edit the existing ones!</p>
+            <p>{`This is your space to create your own blog posts! Please ${user ? 'use navigation' : 'log in '} to see your posts, create new and edit the existing ones!`}</p>
         </div>
     )
 }
