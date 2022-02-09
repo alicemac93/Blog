@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useSelector } from 'react-redux';
+
 import './App.css';
 import AllArticles from './features/adminSide/articles/AllArticles';
-import Nav from './Layout';
+import Nav from './containers/Layout';
 import NewArticle from './components/AdminSide/NewArticle';
 import EditArticle from "./components/AdminSide/EditArticle";
 import Inspiration from "./components/AdminSide/Inspiration";
@@ -11,14 +12,14 @@ import Login from "./components/login";
 import RecentArticles from "./components/UserSide/RecentArticles";
 import ArticleDetail from "./components/UserSide/ArticleDetail";
 import { selectArticles, selectActiveId, selectActiveArticleId } from '../src/features/adminSide/articles/ArticlesSlice';
-import { useSelector } from 'react-redux';
 
 function App() {
 
   const articles = useSelector(selectArticles);
   const activePostId = useSelector(selectActiveId);
   const activeArticleId = useSelector(selectActiveArticleId)
-  const [token, setToken] = useState(); /* https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications */
+
+//  const [token, setToken] = useState(); /* https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications */
 
   return (
     <div className="App">
