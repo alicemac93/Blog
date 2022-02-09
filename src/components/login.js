@@ -22,7 +22,7 @@ export default function Login() {
         <label for="userName">Username</label>
         <input id="userName" name="userName" type="text" onChange={(e) => setUser(e.target.value)} />
         <label for="password">Password</label>
-        <input id="password" name="password" type="text" onChange={(e) => setPassword(e.target.value)} />
+        <input id="password" name="password" type="password" onChange={(e) => setPassword(e.target.value)} />
         <PublishButton type="submit" onClick={(e) => handleLogin(e)}>
           Login
         </PublishButton>
