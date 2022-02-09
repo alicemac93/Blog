@@ -12,7 +12,7 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(setActiveUser(user))
+    dispatch(setActiveUser(user.toLowerCase()))
     navigate('/home')
   }
 

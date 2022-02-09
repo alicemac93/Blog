@@ -49,7 +49,7 @@ function NewArticle() {
             image,
             imageId: uuidv4(),
             createdAt: Date.now(),
-            user,
+            user: user.toLowerCase()
         }
 
         dispatch(addArticle(data))
