@@ -18,7 +18,7 @@ function ArticleDetail({ articles, activeArticleId }) {
             <div className="aricle-detail--heading">
                 <h1>{title}</h1>
                 <p>{`date published: ${datePublished.getDate()}/${datePublished.getMonth()}/${datePublished.getFullYear()}`}</p>
-                <p>{user}</p>
+                <p>Author: {user}</p>
             </div>
             <p>{content}</p>
         </div>
