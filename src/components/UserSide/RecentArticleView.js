@@ -21,15 +21,14 @@ function RecentArticleView({ article }) {
         <Article>
             <Link to={`/article-detail/${articleId}`}
                 className="flip-card"
-                onClick={() => dispatch(getActiveArticleId(articleId))}
-                style={{ color: "#fff", textDecoration: "none" }}>
+                onClick={() => dispatch(getActiveArticleId(articleId))}>
 
                 <div className="flip-card-inner">
                     <div className="flip-card-front">
                         <div className="flip-card-image-container">
-                        <img className="flip-card-font--image" src={image} alt={title} />
+                            <img className="flip-card-font--image" src={image} alt={title} />
                         </div>
-                        <h3>{title}</h3>
+                        <h4 className="flip-card--heading">{title}</h4>
                         <p>Author: {user}</p>
                         <p>{(readingTime) ? `Reading time ${readingTime}` : undefined}</p>
                     </div>
