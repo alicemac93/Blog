@@ -23,9 +23,18 @@ function Home() {
 
         return message;
     }
+
+    const getUserName = () => {
+        if (user) {
+            return user.charAt(0).toUpperCase() + user.slice(1) + ',';
+        } else {
+            return ''
+        }
+    }
+
     return (
         <div className="greeting-container">
-            <h2>{getGreeting()}</h2>  {/* Add name of the user */}
+            <h2>{getUserName()} {getGreeting()}</h2>
             <p>{`This is your space to create your own blog posts! Please ${user ? 'use navigation' : 'log in '} to see your posts, create new and edit the existing ones!`}</p>
         </div>
     )
