@@ -9,10 +9,12 @@ function RecentArticleView({ article }) {
     const dispatch = useDispatch()
     const { title, articleId, image, content, user } = article;
 
+
     useEffect(() => {
         const calculateReadingTime = () => {
             const words = content.match(/(\w+)/g).length;
-            setReadingTime(Math.floor(words / 238))
+            const readingTimeCalc = Math.floor(words / 238)
+            setReadingTime(readingTimeCalc < 1 ? "< 1 min" : readingTimeCalc)
         }
         calculateReadingTime()
     }, [])
@@ -26,17 +28,17 @@ function RecentArticleView({ article }) {
                 <div className="flip-card-inner">
                     <div className="flip-card-front">
                         <div className="flip-card-image-container">
-                            <img className="flip-card-font--image" src={image} alt={title} />
+                            <img className="flip-card-front--image" src={image} alt={title} />
                         </div>
-                        <h4 className="flip-card--heading">{title}</h4>
-                        <p>Author: {user}</p>
-                        <p>{(readingTime) ? `Reading time ${readingTime}` : undefined}</p>
+                        <div className="flip-card-detail-container">
+                            <h4 className="flip-card-front--heading">{title}</h4>
+                            <p>Author: {user}</p>
+                            <p>{(readingTime) ? `Reading time: ${readingTime} min` : undefined}</p>
+                        </div>
                     </div>
 
                     <div className="flip-card-back">
-                        <p style={{ "overflow": "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", }}>
-                            {content}
-                        </p>
+                        <p>{content}</p>
                     </div>
                 </div>
 
